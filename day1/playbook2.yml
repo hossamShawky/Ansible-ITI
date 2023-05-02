@@ -1,0 +1,18 @@
+- name: play-2
+  gather_facts: false
+  hosts: web
+  tasks:
+   - name: ch-dir-handel-err
+     command: cd mydir
+     register: output
+     ignore_errors: true
+   - name: if-task-failed
+     debug:
+        msg: "{{output}}"
+          # - name: using-sudo
+     # apt:
+       # update_cache: true
+   - name: copy-files-task
+     copy:
+       src: /home/shawky/Documents/Ansible/Day1/ansible.cfg
+       dest: /home/ansible/  

@@ -1,0 +1,21 @@
+- name: hands-on-lab
+  gather_facts: false
+  hosts: web
+  tasks:
+   - name: update-cache-task  
+     apt:
+       update_cache: true
+   - name: install-nginx-task
+     apt:
+      name: nginx
+      state: latest
+   - name: copy-files-task
+     copy:
+      src: ./index.html
+      dest: /var/www/html/index.html
+   - name: restart-nginx-task
+     service:
+       name: nginx
+       status: restarted     
+        
+

@@ -1,0 +1,7 @@
+- name: play-1
+  hosts: web
+  tasks:
+   - name: ping-task
+     ping:
+   - name: logged-user
+     command: whoami    
