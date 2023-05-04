@@ -1,0 +1,20 @@
+---
+# tasks file for ./roles/web
+- name: task-1 install package
+  package:
+    name: "{{package}}"
+    state: "{{state}}"
+
+- name: task-2 copy file  [dynamic name&content]
+  template:
+    src: "templates/{{file_name}}"
+    dest: /var/www/html/index.html
+  notify: Restart-Nginx
+  register: status
+- name: task-3 copy files [loop]
+  copy:
+   src: "{{item}}"
+   dest: /var/www/html/
+  loop: "{{files}}"
+  notify: Restart-Nginx  
+  when: status.changed == true
