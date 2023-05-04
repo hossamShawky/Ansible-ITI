@@ -1,0 +1,25 @@
+- name: loops
+  gather_facts: false
+  vars:
+   commands_list:
+    - whoami
+    - sleep 10
+    - date
+  tasks:
+   - name: print names task
+     command: echo HI + "{{item}}" 
+     loop:
+      - first
+      - seconed
+      - third
+    
+   - name: commands task
+     command: "{{item}}" 
+     loop: "{{commands_list}}"
+
+   
+   - name: nested loop task
+     command: echo "{{item.user}} :{{item.dept}}"
+     loop:
+      - {user: first, dept: cs} 
+      - {user: seconed, dept: is}  

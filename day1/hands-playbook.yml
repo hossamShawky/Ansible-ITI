@@ -16,6 +16,6 @@
    - name: restart-nginx-task
      service:
        name: nginx
-       status: restarted     
+       state: restarted     
         
 

@@ -1,0 +1,9 @@
+- name: task-1
+  command: echo "HELLO {{user}}"
+  register: res1
+- name: task-2
+  copy: 
+   src: "{{item}}"
+   dest: /var/www/html/
+  loop: "{{files}}"
+  when: res1.changed == true

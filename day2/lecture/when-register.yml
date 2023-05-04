@@ -1,0 +1,12 @@
+- name: when-register
+  hosts: web
+  gather_facts: true
+  tasks:
+   - name: execute if dis=Ubuntu and save data
+     command: cat /var/www/html/index.html 
+     when: ansible_facts['distribution'] == "Ubuntu"
+     register: debug_result
+  
+   - name: deubg-last tasks
+     debug:
+      var: debug_result.stdout

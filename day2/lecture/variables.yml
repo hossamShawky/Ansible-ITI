@@ -1,0 +1,18 @@
+- name: task varaibles 
+  hosts: web
+  vars:
+     package: nginx
+  vars_files:
+    - ./vars.yml   
+  tasks:
+   - name: install nginx
+     apt:
+      name: "{{package}}"
+   - name: varaible from inventory
+     command: echo "{{welcome}}"       
+   - name: varaible from ansible_facts
+     command: echo your_Desctribution + "{{ansible_facts['distribution']}}"
+   - name: varaible from cmd
+     command: echo HI + "{{user}}" 
+   - name: varaible from file
+     command: echo HI + "{{user}}" + "{{dept}}" 

@@ -1,0 +1,5 @@
+- name: web role playbook
+  hosts:
+    web
+  roles:
+   - web  

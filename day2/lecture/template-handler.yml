@@ -1,0 +1,16 @@
+- name: task template and handler Ubuntu-Distrbution 
+  hosts: web
+  vars:
+     nginx_port: "{{ '8080' if ansible_facts['distribution'] == 'Ubuntu' else '80' }}" 
+  tasks:
+   - name: change nginx configuration
+     template:
+       src: ./default.j2    
+       dest: /etc/nginx/sites-enabled/default
+     notify: 
+       - restart-nginx
+  handlers: 
+    - name: restart-nginx
+      service:
+        name: nginx
+        state: restarted  

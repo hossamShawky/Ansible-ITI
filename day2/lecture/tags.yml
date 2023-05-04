@@ -1,0 +1,14 @@
+- name: running specific task
+  gather_facts: false
+  hosts: web
+  tasks:
+   - name: echo-task
+     tags: echo-tag
+     command: echo echo-task-tag
+   - name: ping-task
+     tags: ping-tag
+     ping:  
+   - name: updatecache-task
+     tags: [never,update-tag]
+     apt:
+      update_cache: true     
