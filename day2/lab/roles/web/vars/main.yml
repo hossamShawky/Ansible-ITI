@@ -1,0 +1,13 @@
+---
+# vars file for ./roles/web
+# install package task varabiles
+package: nginx
+state: latest
+# copy-file taslk varaibles
+file_name: "index.html.j2" 
+message: "<mark> Hello, Ansible-Roles..... </mark>"
+# copy files 
+files:
+ - index.css
+ - index.js 
+    

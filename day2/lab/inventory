@@ -1,7 +1,5 @@
-[defaults]
-inventory = ./inventory
-private_key_file = ~/.ssh/id_rsa
-remote_user = ansible
-[privilege_escalation]
-become= true
-become_ask_pass= true
+[web]
+172.17.0.2 welcome=hello_ansible
+[db]
+172.17.0.3
+172.0.0.20
